@@ -20,7 +20,7 @@ public class AccountController : BaseApiController
         _tokenService = tokenService;
     }
 
-    [HttpPostAttribute("register")]
+    [HttpPost("register")]
     public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
         if (await UserExists(registerDto.Username)) return BadRequest("Ya existe ese nombre de usuario");
@@ -43,9 +43,9 @@ public class AccountController : BaseApiController
         };
     }
 
-    private Task<bool> UserExists(object username)
+    private async Task<bool> UserExists(string username)
     {
-        throw new NotImplementedException();
+        return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
     }
 
     [HttpPost("login")]
@@ -72,8 +72,4 @@ public class AccountController : BaseApiController
         };
     }
 
-    private async Task<bool> ValidateUser(string username)
-    {
-        return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
-    }
 }
