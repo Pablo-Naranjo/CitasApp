@@ -16,7 +16,7 @@ export class JwtInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    this.accountService.currenUser$.pipe(take(1)).subscribe({
+    this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: (user) => {
         if (user) {
           request = request.clone({

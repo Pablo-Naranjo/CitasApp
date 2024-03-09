@@ -27,7 +27,7 @@ export class MemberEditComponent {
     private memberService: MembersService,
     private toastr: ToastrService
   ) {
-    this.accountService.currenUser$.pipe(take(1)).subscribe({
+    this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: (user) => (this.user = user),
     });
   }

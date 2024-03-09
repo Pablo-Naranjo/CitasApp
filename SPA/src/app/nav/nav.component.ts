@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //this.currentUser$ = this.accountService.currenUser$;
+    //this.currentUser$ = this.accountService.currentUser$;
   }
 
   login(): void {

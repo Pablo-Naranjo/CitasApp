@@ -2,7 +2,7 @@
   <div class="container">
     <a class="navbar-brand" href="#">Mi Primera Cita</a>
     <ul class="navbar-nav me-auto mb-2 mb-md-0">
-      <ng-container *ngIf="accountService.currenUser$ | async">
+      <ng-container *ngIf="accountService.currentUser$ | async">
         <li class="nav-item">
           <a class="nav-link" routerLink="/members" routerLinkActive="active"
             >Parejas</a
@@ -28,9 +28,10 @@
 
     <div
       class="dropdown"
-      *ngIf="accountService.currenUser$ | async as user"
+      *ngIf="accountService.currentUser$ | async as user"
       dropdown
     >
+      <img src="{{ user.photoUrl || './assets/user.png' }}" alt="User photo" />
       <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle
         >Bienvenido {{ user.username | titlecase }}</a
       >
@@ -41,7 +42,7 @@
     </div>
 
     <form
-      *ngIf="!(accountService.currenUser$ | async)"
+      *ngIf="!(accountService.currentUser$ | async)"
       #loginForm="ngForm"
       class="d-flex"
       (ngSubmit)="login()"
