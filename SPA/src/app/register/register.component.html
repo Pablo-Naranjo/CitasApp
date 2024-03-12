@@ -1,20 +1,24 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="false">
   <h2 class="text-center text-primary">Regístrate</h2>
   <hr />
-  <app-text-input
-    [formControl]="$any(registerForm.controls['username'])"
-    [label]="'Username'"
-  ></app-text-input>
-  <app-text-input
-    [formControl]="$any(registerForm.controls['password'])"
-    [label]="'Password'"
-    [type]="'password'"
-  ></app-text-input>
-  <app-text-input
-    [formControl]="$any(registerForm.controls['confirmPassword'])"
-    [label]="'Confirm Password'"
-    [type]="'password'"
-  ></app-text-input>
+
+  <div class="mb-3">
+    <label style="margin-right: 10px;">Me identifico como:</label>
+    <label class="form-check-label">
+      <input type="radio" class="form-check-input ms-2" value="female" formControlName="gender">Female
+    </label>
+    <label class="form-check-label">
+      <input ms-2 type="radio" class="form-check-input ms-3" value="male" formControlName="gender">Male
+    </label>
+  </div>
+
+  <app-text-input [formControl]="$any(registerForm.controls['username'])" [label]="'Username'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['knownAs'])" [label]="'Known as'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['dateOfBirth'])" [label]="'Date of birth'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['city'])" [label]="'City'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['country'])" [label]="'Country'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['password'])" [label]="'Password'"[type]="'password'"></app-text-input>
+  <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])" [label]="'Confirm Password'"[type]="'password'"></app-text-input>
   <div class="text-center">
     <button class="btn btn-sucess me-2" type="submit">Registrarme</button>
     <button class="btn btn-default" type="submit" (click)="cancel()">
